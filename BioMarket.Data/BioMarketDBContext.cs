@@ -15,16 +15,18 @@
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BioMarketDBContext, Configuration>());
         }
 
-        public static BioMarketDBContext Create()
-        {
-            return new BioMarketDBContext();
-        }
-
         public IDbSet<Product> Products { get; set; }
 
         public IDbSet<Offer> Offers { get; set; }
 
-       // public IDbSet<Account> Accounts { get; set; }
+        public IDbSet<Farm> Farms { get; set; }
+
+        public IDbSet<Client> Clients { get; set; }
+
+        public static BioMarketDBContext Create()
+        {
+            return new BioMarketDBContext();
+        }
 
         public new IDbSet<T> Set<T>() where T : class
         {

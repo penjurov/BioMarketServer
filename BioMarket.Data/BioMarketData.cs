@@ -30,6 +30,22 @@
             }
         }
 
+        public IGenericRepository<Farm> Farms
+        {
+            get
+            {
+                return this.GetRepository<Farm>();
+            }
+        }
+
+        public IGenericRepository<Client> Clients
+        {
+            get
+            {
+                return this.GetRepository<Client>();
+            }
+        }
+
         public IGenericRepository<Product> Products
         {
             get

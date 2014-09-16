@@ -10,8 +10,8 @@
         public Product()
         {
             this.offers = new HashSet<Offer>();
-
         }
+
         public int Id { get; set; }
 
         [Required]

@@ -18,6 +18,7 @@ using BioMarket.Web.Providers;
 using BioMarket.Web.Results;
 using BioMarket.Models;
 using System.Web.Security;
+using BioMarket.Data;
 
 namespace BioMarket.Web.Controllers
 {
@@ -27,9 +28,11 @@ namespace BioMarket.Web.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private IBioMarketData data;
 
         public AccountController()
         {
+            this.data = new BioMarketData();
         }
 
         public AccountController(ApplicationUserManager userManager,
@@ -45,6 +48,7 @@ namespace BioMarket.Web.Controllers
             {
                 return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
+
             private set
             {
                 _userManager = value;
@@ -330,36 +334,43 @@ namespace BioMarket.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new Account();
-            var role = string.Empty;
-
-            if (model.FirstName == null)
-	        {
-                user = new Account()
-                {
-                    UserName = model.UserName,
-                    FarmOwner = model.FarmOwner,
-                    Email = model.Email
-                };
-
-                role = "Farmer";
-	        }
-            else
+            var user = new Account()
             {
-                user = new Account()
-                {
-                    UserName = model.UserName,
-                    FirstName = model.FirstName,
-                    Email = model.Email
-                };
-
-                role = "Client";
-            }
+                UserName = model.UserName,
+                Email = model.Email
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
             
             if (result.Succeeded)
             {
+                var role = string.Empty;
+
+                if (model.FirstName == null)
+                {
+                    var farm = new Farm()
+                    {
+                        Owner = model.FarmOwner,
+                        Account = user.UserName
+                    };
+
+                    this.data.Farms.Add(farm);
+                    role = "Farmer";
+                }
+                else
+                {
+                    var client = new Client()
+                    {
+                        FirstName = model.FirstName,
+                        Account = user.UserName
+                    };
+
+                    this.data.Clients.Add(client);
+                    role = "Client";
+                }
+
+               
+                this.data.SaveChanges();
                 var idResult = UserManager.AddToRole(user.Id, role);
 
                 return Ok();
@@ -454,7 +465,9 @@ namespace BioMarket.Web.Controllers
         private class ExternalLoginData
         {
             public string LoginProvider { get; set; }
+
             public string ProviderKey { get; set; }
+
             public string UserName { get; set; }
 
             public IList<Claim> GetClaims()

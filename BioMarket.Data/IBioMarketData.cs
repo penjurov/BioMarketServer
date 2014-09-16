@@ -7,6 +7,10 @@
     {
         IGenericRepository<Account> Accounts { get; }
 
+        IGenericRepository<Farm> Farms { get; }
+
+        IGenericRepository<Client> Clients { get; }
+
         IGenericRepository<Product> Products { get; }
 
         IGenericRepository<Offer> Offers { get; }

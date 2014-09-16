@@ -76,3 +76,41 @@ D:\New folder\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.Owin.xml
 D:\New folder\BioMarket\BioMarket.Data\obj\Debug\BioMarket.Data.csprojResolveAssemblyReference.cache
 D:\New folder\BioMarket\BioMarket.Data\obj\Debug\Clinics.Data.dll
 D:\New folder\BioMarket\BioMarket.Data\obj\Debug\Clinics.Data.pdb
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.OData.Core.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.OData.Edm.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Spatial.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.Cors.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.Cors.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.OData.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.OData.Core.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.OData.Edm.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Spatial.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.Cors.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.OData.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\de\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\es\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\fr\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\it\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ja\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ko\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ru\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\zh-Hans\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\zh-Hant\Microsoft.OData.Core.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\de\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\es\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\fr\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\it\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ja\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ko\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ru\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\zh-Hans\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\zh-Hant\Microsoft.OData.Edm.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\de\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\es\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\fr\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\it\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ja\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ko\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\ru\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\zh-Hans\Microsoft.Spatial.resources.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\zh-Hant\Microsoft.Spatial.resources.dll
