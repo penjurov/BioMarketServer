@@ -1,0 +1,16 @@
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\obj\Debug\BioMarket.Data.csprojResolveAssemblyReference.cache
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\obj\Debug\Clinics.Data.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\obj\Debug\Clinics.Data.pdb
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Clinics.Data.dll.config
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Clinics.Data.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Clinics.Data.pdb
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Clinics.Models.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Bson.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Driver.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Clinics.Models.pdb
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Bson.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Driver.xml
