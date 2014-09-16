@@ -1,27 +1,76 @@
 ﻿namespace BioMarket.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
-    public class Account
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Collections.Generic;
+
+    public class Account : IdentityUser
     {
-        public int Id { get; set; }
+        private ICollection<Offer> offers;
+        private ICollection<Product> products;
 
-        [Required]
-        [MinLength(3)]
-        public string Username { get; set; }
+        public Account()
+        {
+            this.offers = new HashSet<Offer>();
+            this.products = new HashSet<Product>();
+        }
 
-        [Required]
-        public string Authentification { get; set; }
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Account> manager, string authenticationType)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+            // Add custom user claims here
+            return userIdentity;
+        }
 
-        public DateTime RegisterDate { get; set; }
+        public string FirstName { get; set; }
 
-        public virtual Client Client { get; set; }
+        public string LastName { get; set; }
 
-        public int? ClientId { get; set; }
+        public string Phone { get; set; }
 
-        public virtual Farm Farm { get; set; }
+        public string FarmName { get; set; }
 
-        public int? FarmId { get; set; }
+        public string FarmAddress { get; set; }
+
+        public string FarmPhones { get; set; }
+
+        public string FarmOwner { get; set; }
+
+        public decimal Latitude { get; set; }
+
+        public decimal Longitude { get; set; }
+
+        public bool Deleted { get; set; }
+
+        public virtual ICollection<Product> Products 
+        { 
+            get
+            {
+                return this.products;
+            }
+
+            set
+            {
+                this.products = value;
+            }
+        }
+
+        public virtual ICollection<Offer> Offers 
+        { 
+            get
+            {
+                return this.offers;
+            }
+
+            set
+            {
+                this.offers = value;
+            }
+        }
     }
 }

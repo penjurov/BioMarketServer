@@ -8,7 +8,7 @@
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
-            this.ContextKey = "Clinics.Data.ClinicsDBContex";
+            this.ContextKey = "BioMarket.Data.BioMarketDBContext";
         }
 
         protected override void Seed(BioMarketDBContext context)

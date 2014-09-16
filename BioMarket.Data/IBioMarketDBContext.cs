@@ -9,13 +9,13 @@
     {
         IDbSet<Offer> Offers { get; set; }
 
-        IDbSet<Farm> Farms { get; set; }
+        //IDbSet<Farm> Farms { get; set; }
 
-        IDbSet<Client> Clients { get; set; }
+        //IDbSet<Client> Clients { get; set; }
 
         IDbSet<Product> Products { get; set; }
 
-        IDbSet<Account> Accounts { get; set; }
+       // IDbSet<Account> Accounts { get; set; }
 
         IDbSet<T> Set<T>() where T : class;
 

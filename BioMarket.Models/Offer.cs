@@ -17,7 +17,7 @@
 
         public string ProductPhoto { get; set; }
 
-        public virtual Client BoughtBy { get; set; }
+        public virtual Account BoughtBy { get; set; }
 
         public int BoughtById { get; set; }
 

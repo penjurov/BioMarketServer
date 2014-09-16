@@ -14,3 +14,65 @@ D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.xml
 D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Bson.xml
 D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Driver.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Newtonsoft.Json.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Owin.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Net.Http.Formatting.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.Owin.dll
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\Newtonsoft.Json.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Net.Http.Formatting.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.xml
+D:\Dropbox\Telerik\GitHub\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.Owin.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Clinics.Data.dll.config
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Clinics.Data.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Clinics.Data.pdb
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Clinics.Models.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Bson.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Driver.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Newtonsoft.Json.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Owin.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\System.Net.Http.Formatting.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.Owin.dll
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Clinics.Models.pdb
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Bson.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\MongoDB.Driver.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\Newtonsoft.Json.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\System.Net.Http.Formatting.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.xml
+D:\New folder\BioMarket\BioMarket.Data\bin\Debug\System.Web.Http.Owin.xml
+D:\New folder\BioMarket\BioMarket.Data\obj\Debug\BioMarket.Data.csprojResolveAssemblyReference.cache
+D:\New folder\BioMarket\BioMarket.Data\obj\Debug\Clinics.Data.dll
+D:\New folder\BioMarket\BioMarket.Data\obj\Debug\Clinics.Data.pdb
