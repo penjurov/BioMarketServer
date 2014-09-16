@@ -18,6 +18,10 @@
 
         public virtual Client Client { get; set; }
 
+        public int? ClientId { get; set; }
+
         public virtual Farm Farm { get; set; }
+
+        public int? FarmId { get; set; }
     }
 }

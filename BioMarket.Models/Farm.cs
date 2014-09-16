@@ -33,6 +33,8 @@
         [Required]
         public virtual Account Account { get; set; }
 
+        public int AccountId { get; set; }
+
         public virtual ICollection<Product> Products 
         { 
             get
