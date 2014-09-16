@@ -1,27 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using BioMarket.Web.Models;
-using BioMarket.Web.Providers;
-using BioMarket.Web.Results;
-using BioMarket.Models;
-using System.Web.Security;
-using BioMarket.Data;
-
-namespace BioMarket.Web.Controllers
+﻿namespace BioMarket.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Security.Claims;
+    using System.Security.Cryptography;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Http;
+    using System.Web.Http.ModelBinding;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using Microsoft.Owin.Security.Cookies;
+    using Microsoft.Owin.Security.OAuth;
+    using BioMarket.Web.Models;
+    using BioMarket.Web.Providers;
+    using BioMarket.Web.Results;
+    using BioMarket.Models;
+    using System.Web.Security;
+    using BioMarket.Data;
+
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -348,10 +348,28 @@ namespace BioMarket.Web.Controllers
 
                 if (model.FirstName == null)
                 {
+                    decimal latitude = 0;
+                    decimal longitude = 0;
+
+                    if (model.Latitude != null)
+                    {
+                        latitude = decimal.Parse(model.Latitude);
+                    }
+
+                    if (model.Longitude != null)
+                    {
+                        longitude = decimal.Parse(model.Longitude);
+                    }
+
                     var farm = new Farm()
                     {
-                        Owner = model.FarmOwner,
-                        Account = user.UserName
+                        Owner = model.Owner,
+                        Account = user.UserName,
+                        Name = model.Name,
+                        Address = model.Address,
+                        Phones = model.Phone,
+                        Latitude = latitude,
+                        Longitude = longitude
                     };
 
                     this.data.Farms.Add(farm);
@@ -362,6 +380,7 @@ namespace BioMarket.Web.Controllers
                     var client = new Client()
                     {
                         FirstName = model.FirstName,
+                        LastName = model.LastName,
                         Account = user.UserName
                     };
 
@@ -369,18 +388,15 @@ namespace BioMarket.Web.Controllers
                     role = "Client";
                 }
 
-               
                 this.data.SaveChanges();
                 var idResult = UserManager.AddToRole(user.Id, role);
 
-                return Ok();
+                return Ok(result);
             }
             else
             {
                 return GetErrorResult(result);
-            }
-
-            
+            } 
         }
 
         // POST api/Account/RegisterExternal

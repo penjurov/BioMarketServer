@@ -37,11 +37,35 @@ namespace BioMarket.Web.Models
         [Display(Name = "UserName")]
         public string UserName { get; set; }
 
+        // Client
         [Display(Name = "FirstName")]
         public string FirstName { get; set; }
 
+        [Display(Name = "LastName")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
+
+        // --------------------------------------
+
+        // Farm
         [Display(Name = "Owner")]
-        public string FarmOwner { get; set; }
+        public string Owner { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Display(Name = "Latitude")]
+        public string Latitude { get; set; }
+
+        [Display(Name = "Longitude")]
+        public string Longitude { get; set; }
+
+        // --------------------------------------
 
         [Required]
         [Display(Name = "Email")]
