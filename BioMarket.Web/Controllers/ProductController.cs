@@ -70,6 +70,52 @@ namespace BioMarket.Web.Controllers
 
         [Authorize]
         [HttpPut]
+        public IHttpActionResult Update(int id, ProductModel product)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            var isFarmer = this.User.IsInRole("Farmer");
+
+            if (!isFarmer)
+            {
+                return this.BadRequest("You are not farmer!");
+            }
+
+            var existingProduct = this.data
+            .Products
+                              .All()
+                              .Where(p => p.Id == id && p.Deleted == false)
+                              .FirstOrDefault();
+
+            if (existingProduct == null)
+            {
+                return this.BadRequest("Such product does not exists!");
+            }
+
+            existingProduct.Name = product.Name;
+            existingProduct.Price = product.Price;
+            existingProduct.Farm = product.Farm;
+
+            this.data.SaveChanges();
+
+            product.Id = id;
+
+            var newProduct = new
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Farm = product.Farm
+            };
+
+            return this.Ok(newProduct);
+        }
+
+        [Authorize]
+        [HttpPut]
         public IHttpActionResult Delete(int id)
         {
             var isFarmer = this.User.IsInRole("Farmer");
