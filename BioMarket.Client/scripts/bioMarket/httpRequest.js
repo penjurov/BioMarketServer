@@ -1,13 +1,12 @@
 define(['Q'], function (Q) {
 	var httpRequest = (function () {
-		var getJSON = function(url, contentType, acceptType) {
+		var getJSON = function(url, acceptType) {
 			var deferred = Q.defer();
 			Q.stopUnhandledRejectionTracking();
 
 			$.ajax({
 				url: url,
 				type: 'GET',
-				contentType : contentType || '',
 				acceptType : acceptType || '',
 				success: function (data) {
 					deferred.resolve(data);

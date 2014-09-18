@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioMarket.Data", "BioMarket
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioMarket.Models", "BioMarket.Models\BioMarket.Models.csproj", "{230867D0-9F01-4E37-8CD6-DA8BB60296E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioMarket.Client", "BioMarket.Client\BioMarket.Client.csproj", "{45F88200-91F3-4F0D-A3FA-A50EC4BD4993}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{230867D0-9F01-4E37-8CD6-DA8BB60296E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{230867D0-9F01-4E37-8CD6-DA8BB60296E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{230867D0-9F01-4E37-8CD6-DA8BB60296E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F88200-91F3-4F0D-A3FA-A50EC4BD4993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F88200-91F3-4F0D-A3FA-A50EC4BD4993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F88200-91F3-4F0D-A3FA-A50EC4BD4993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F88200-91F3-4F0D-A3FA-A50EC4BD4993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

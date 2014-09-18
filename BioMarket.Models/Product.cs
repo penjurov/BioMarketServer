@@ -23,7 +23,7 @@
         public bool Deleted { get; set; }
 
         [Required]
-        public virtual Account Farm { get; set; }
+        public virtual Farm Farm { get; set; }
 
         public int FarmId { get; set; }
 

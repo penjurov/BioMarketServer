@@ -17,14 +17,14 @@
 
         public string ProductPhoto { get; set; }
 
-        public virtual Account BoughtBy { get; set; }
+        public virtual Client BoughtBy { get; set; }
 
-        public int BoughtById { get; set; }
+        public int? BoughtById { get; set; }
 
         [Required]
         public DateTime PostDate { get; set; }
 
-        public DateTime BoughtDate { get; set; }
+        public DateTime? BoughtDate { get; set; }
 
         public bool Deleted { get; set; }
     }

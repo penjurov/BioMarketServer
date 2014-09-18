@@ -71,6 +71,22 @@ body {
 	display:block;
 }
 
+.main-content .photo {
+	margin-top: 10px;
+	width : 80%;
+	height: 300px;
+}
+
+.main-content .fileBrowser {
+	display: none;
+}
+
+.main-content .comboBox {
+	display: inline-block;
+	width: 80%;
+}
+
+
 .getpost-page .k-grid {
 	margin-top:50px;
 	width:100%;

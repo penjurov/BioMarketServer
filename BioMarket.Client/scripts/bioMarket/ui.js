@@ -1,5 +1,7 @@
-define(['jquery', 'handlebars', 'kendo'], function ($) {
+define(['jquery', 'logic', 'httpRequest', 'handlebars', 'kendo'], function ($,logic, httpRequest) {
 	var START_MENU_SIZE = 300;
+	var contentType = 'application/json',
+		acceptType = 'application/json';
 
 	var initHomePage = function() {
 		var username = localStorage.getItem('crowdShareUserName');
@@ -38,6 +40,26 @@ define(['jquery', 'handlebars', 'kendo'], function ($) {
 			$('#client-register-button').kendoButton();
 			$('#client-register-email').focus();
 		});
+
+	};
+
+	var initUpdateClientPage = function () {
+		initPage('#menu', $('#menu-container'));
+
+
+		$('#main-content').load('updateClient.html', function () {
+			$('#client-update-email').kendoMaskedTextBox();
+			$('#client-update-password').kendoMaskedTextBox();
+			$('#client-repeat-update-password').kendoMaskedTextBox();
+			$('#client-update-firstname').kendoMaskedTextBox();
+			$('#client-update-lastname').kendoMaskedTextBox();
+			$('#client-update-phone').kendoMaskedTextBox();
+			$('#client-update-button').kendoButton();
+			$('#client-update-email').focus();
+		});
+
+		logic.populateClientProfile();
+
 	};
 
 	var initRegisterFarmPage = function() {
@@ -56,6 +78,41 @@ define(['jquery', 'handlebars', 'kendo'], function ($) {
 			$('#farm-register-longitude').kendoMaskedTextBox();
 			$('#farm-register-button').kendoButton();
 			$('#farm-register-email').focus();
+		});
+	};
+
+	var initUpdateFarmPage = function() {
+		initPage('#menu', $('#menu-container'));
+
+		$('#main-content').load('updateFarm.html', function() {
+			$('#farm-email').kendoMaskedTextBox();
+			$('#farm-username').kendoMaskedTextBox();
+			$('#farm-old-password').kendoMaskedTextBox();
+			$('#farm-new-password').kendoMaskedTextBox();
+			$('#farm-repeat-new-password').kendoMaskedTextBox();
+			$('#farm-name').kendoMaskedTextBox();
+			$('#farm-address').kendoMaskedTextBox();
+			$('#farm-phone').kendoMaskedTextBox();
+			$('#farm-owner').kendoMaskedTextBox();
+			$('#farm-latitude').kendoMaskedTextBox();
+			$('#farm-longitude').kendoMaskedTextBox();
+			$('#farm-update-button').kendoButton();
+			$('#farm-email').focus();
+		});
+		
+		logic.populateFarmProfile();
+	};
+
+	var initAddOfferPage = function() {
+		initPage('#menu', $('#menu-container'));
+		
+		$('#main-content').load('addOffer.html', function() {
+			$('#add-offer-products').kendoComboBox();
+			$('#add-offer-quantity').kendoMaskedTextBox();
+			$('#add-offer-choose-photo-button').kendoButton();
+			$('#add-offer-button').kendoButton();
+			$('#add-offer-product').focus();
+			addProducts();
 		});
 	};
 
@@ -94,11 +151,46 @@ define(['jquery', 'handlebars', 'kendo'], function ($) {
 
 	}
 
+	// Adding products types from JSON array to Kendo multiselect
+	var addProducts = function() {
+		var url = 'http://localhost:6022/api/Product/All',
+			products = [];
+
+		httpRequest.getJSON(url, contentType, acceptType)
+			.then(function (data) {
+					products = data;
+					handleBarConvert($('#product-template'), $('#add-offer-products'), products);
+					$("#add-offer-products").kendoComboBox().data("kendoComboBox");
+				}, function (err) {
+					alert(JSON.parse(err.responseText).message);
+				}
+			);
+
+
+	};
+
+	// Handlebar templates
+	function handleBarConvert(template, container, items) {
+		Handlebars.registerHelper('multiply', function (first, second) {
+			var result = first * second;
+			return result;
+		});
+
+		var currentTemplate = Handlebars.compile(template.html());
+
+		container.html(currentTemplate({
+			products : items
+		}));
+	}
+
 	return {
 		initHomePage: initHomePage,
 		initLoginPage: initLoginPage,
 		initRegisterClientPage: initRegisterClientPage,
-		initRegisterFarmPage : initRegisterFarmPage,
+		initUpdateClientPage: initUpdateClientPage,
+		initRegisterFarmPage: initRegisterFarmPage,
+		initUpdateFarmPage: initUpdateFarmPage,
+		initAddOfferPage: initAddOfferPage,
 		showError: showError,
 		drawKendoGrid: drawKendoGrid
 	};
