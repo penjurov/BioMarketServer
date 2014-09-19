@@ -18,7 +18,7 @@
         public string Name { get; set; }
 
         [Required]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public bool Deleted { get; set; }
 

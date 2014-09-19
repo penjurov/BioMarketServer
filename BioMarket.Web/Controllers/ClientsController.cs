@@ -10,7 +10,8 @@
     {
         private readonly IBioMarketData data;
 
-        public ClientsController() : this(new BioMarketData())
+        public ClientsController()
+            : this(new BioMarketData())
         {
         }
 
@@ -67,9 +68,8 @@
             return this.Ok(client);
         }
 
-        [Authorize]
         [HttpPut]
-        public IHttpActionResult Update(int id, ClientModel client)
+        public IHttpActionResult Update(string name, ClientModel client)
         {
             if (!this.ModelState.IsValid)
             {
@@ -87,9 +87,9 @@
 
             var existingClient = this.data
             .Clients
-                                     .All()
-                                     .Where(a => a.Id == id && a.Deleted == false && a.Account == userName)
-                                     .FirstOrDefault();
+                                    .All()
+                                    .Where(a => a.Account == name && a.Deleted == false)
+                                    .FirstOrDefault();
 
             if (existingClient == null)
             {
@@ -102,7 +102,7 @@
 
             this.data.SaveChanges();
 
-            client.Id = id;
+            client.Id = existingClient.Id;
 
             var newClient = new
             {
@@ -115,7 +115,6 @@
             return this.Ok(newClient);
         }
 
-        [Authorize]
         [HttpPut]
         public IHttpActionResult Delete(int id)
         {

@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Web.OData.Extensions;
 using System.Web.Http.Cors;
+using System.Net.Http.Headers;
 
 namespace BioMarket.Web
 {
@@ -19,18 +20,19 @@ namespace BioMarket.Web
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            config.EnableCors();
             // Web API routes
             config.MapHttpAttributeRoutes();
-            config.EnableCors();
-            config.AddODataQueryFilter();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional });
-            
+
             config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/plain"));
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
         }
     }
 }

@@ -3,10 +3,9 @@
     using System;
     using System.Linq;
     using System.Web.Http;
-
     using BioMarket.Data;
-    using BioMarket.Web.Models;
     using BioMarket.Models;
+    using BioMarket.Web.Models;
 
     public class OffersController : ApiController
     {
@@ -34,15 +33,46 @@
         }
 
         [HttpGet]
-        public IHttpActionResult AllDetails()
+        public IHttpActionResult AllDetails(string farmName = "", string postDate = "", string productName = "")
         {
-            var offers = this.data
-            .Offers
-                             .All()
-                             .Where(a => a.Deleted == false)
-                             .Select(OfferModel.FromOfferWithProductAndBoughtBuy);
+            try
+            {
+                var offers = this.data
+                .Offers
+                                 .All()
+                                 .Where(o => o.Deleted == false);
 
-            return this.Ok(offers);
+                if (farmName != string.Empty && farmName != null)
+                {
+                    offers = offers.Where(o => o.Product.Farm.Name == farmName);
+                }
+
+                if (postDate != string.Empty)
+                {
+                    try
+                    {
+                        var date = DateTime.Parse(postDate);
+                        offers = offers.Where(o => o.PostDate.Equals(date));
+                    }
+                    catch (Exception)
+                    {
+                        return this.BadRequest("Invalid data format! Please follow YYYY-MM-DD format!");
+                    }
+                }
+
+                if (productName != string.Empty)
+                {
+                    offers = offers.Where(o => o.Product.Name == productName);
+                }
+
+                var returnOffers = offers.Select(OfferModel.FromOfferWithProductAndBoughtBuy);
+
+                return this.Ok(returnOffers);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest("Invalid data");
+            }
         }
 
         [HttpGet]
@@ -80,7 +110,7 @@
 
             return this.Ok(offer);
         }
-        [Authorize]
+       
         [HttpPost]
         public IHttpActionResult Add(OfferModel offer)
         {
@@ -89,7 +119,7 @@
                 return this.BadRequest(this.ModelState);
             }
 
-            var isFarmer= this.User.IsInRole("Farmer");
+            var isFarmer = this.User.IsInRole("Client");
 
             if (!isFarmer)
             {
@@ -100,13 +130,12 @@
 
             var farmer = this.data.Farms.All().Where(c => c.Account == userName).FirstOrDefault();
 
-
             var newOffer = new Offer
             {
                 Quantity = offer.Quantity,
                 ProductPhoto = offer.ProductPhoto,
                 PostDate = offer.PostDate,
-                ProductId = offer.Product.Id
+                ProductId = offer.ProductId
             };
 
             this.data.Offers.Add(newOffer);
@@ -117,7 +146,6 @@
             return this.Ok(newOffer);
         }
 
-        [Authorize]
         [HttpPut]
         public IHttpActionResult Buy(int id, OfferModel offer)
         {
@@ -163,13 +191,12 @@
                 BoughtBy = offer.BoughtBy,
                 PostDate = offer.PostDate,
                 BoughtDate = offer.BoughtDate,
-                Product = offer.Product
+                ProductId = offer.ProductId
             , };
 
             return this.Ok(newOffer);
         }
 
-        [Authorize]
         [HttpPut]
         public IHttpActionResult Delete(int id)
         {

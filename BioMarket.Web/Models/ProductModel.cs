@@ -4,6 +4,7 @@
     using System.Linq.Expressions;
 
     using BioMarket.Models;
+    using System.ComponentModel.DataAnnotations;
 
     public class ProductModel
     {
@@ -15,19 +16,21 @@
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    Price = p.Price
+                    Price = p.Price,
+                    FarmId = p.FarmId
                 };
             }
         }
 
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
-        public int Price { get; set; }
+        [Required]
+        public decimal Price { get; set; }
 
-        public Farm Farm { get; set; }
-
-        public bool Deleted { get; set; }
+        [Required]
+        public int FarmId { get; set; }
     }
 }

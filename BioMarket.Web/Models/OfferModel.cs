@@ -40,19 +40,14 @@
                         LastName = a.BoughtBy.LastName
                     },
                     BoughtDate = a.BoughtDate,
-                    Product = new ProductModel
-                    {
-                        Id = a.Product.Id,
-                        Name = a.Product.Name,
-                        Price = a.Product.Price
-                    }
+                    ProductId = a.ProductId
                 };
             }
         }
 
         public int Id { get; set; }
 
-        public ProductModel Product { get; set; }
+        public int ProductId { get; set; }
 
         [Required]
         public double Quantity { get; set; }

@@ -5,6 +5,7 @@ namespace BioMarket.Web.Controllers
 
     using BioMarket.Data;
     using BioMarket.Web.Models;
+    using BioMarket.Models;
 
 
     public class ProductController : ApiController
@@ -52,12 +53,12 @@ namespace BioMarket.Web.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult ByName(string id)
+        public IHttpActionResult ByName(string name)
         {
             var product = this.data
             .Products
                               .All()
-                              .Where(p => p.Name == id && p.Deleted == false)
+                              .Where(p => p.Name == name && p.Deleted == false)
                               .Select(ProductModel.FromProduct);
 
             if (product == null)
@@ -68,7 +69,6 @@ namespace BioMarket.Web.Controllers
             return this.Ok(product);
         }
 
-        [Authorize]
         [HttpPut]
         public IHttpActionResult Update(int id, ProductModel product)
         {
@@ -97,7 +97,7 @@ namespace BioMarket.Web.Controllers
 
             existingProduct.Name = product.Name;
             existingProduct.Price = product.Price;
-            existingProduct.Farm = product.Farm;
+            existingProduct.FarmId = product.FarmId;
 
             this.data.SaveChanges();
 
@@ -108,13 +108,12 @@ namespace BioMarket.Web.Controllers
                 Id = product.Id,
                 Name = product.Name,
                 Price = product.Price,
-                Farm = product.Farm
+                FarmId = product.FarmId
             };
 
             return this.Ok(newProduct);
         }
 
-        [Authorize]
         [HttpPut]
         public IHttpActionResult Delete(int id)
         {
@@ -140,6 +139,43 @@ namespace BioMarket.Web.Controllers
             this.data.SaveChanges();
 
             return this.Ok(product);
+        }
+
+        [HttpPost]
+        public IHttpActionResult CreateProduct(ProductModel product)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            var isFarmer = this.User.IsInRole("Farmer");
+
+            if (!isFarmer)
+            {
+                return this.BadRequest("You are not a farmer!");
+            }
+
+            var farm = data.Farms.All().FirstOrDefault(f => f.Account == this.User.Identity.Name);
+
+            var existingProduct = data.Products.All().FirstOrDefault(p => p.Name == product.Name && p.Farm.Id == farm.Id);
+
+            if (existingProduct != null)
+            {
+                return this.BadRequest("You had already added this product!");
+            }
+            var newProduct = new Product()
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Farm = farm,
+                FarmId = farm.Id
+            };
+
+            this.data.Products.Add(newProduct);
+            this.data.SaveChanges();
+
+            return Ok(newProduct.Id);
         }
     }
 }

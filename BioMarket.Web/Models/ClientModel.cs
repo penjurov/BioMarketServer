@@ -39,10 +39,7 @@
                     Offers = a.Offers.Select(s => new OfferModel
                     {
                         Id = s.Id,
-                        Product = new ProductModel
-                        {
-                            Name = s.Product.Name,                            
-                        },
+                        ProductId = s.ProductId,
                         BoughtDate = s.BoughtDate,
                         Quantity = s.Quantity
                     })

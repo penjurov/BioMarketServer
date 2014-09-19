@@ -11,6 +11,9 @@ using Owin;
 using BioMarket.Web.Providers;
 using BioMarket.Web.Models;
 using BioMarket.Data;
+using System.Web.Http.Cors;
+using Thinktecture.IdentityModel;
+using Thinktecture.IdentityModel.Tokens;
 
 namespace BioMarket.Web
 {
@@ -23,6 +26,7 @@ namespace BioMarket.Web
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+ 
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(BioMarketDBContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);

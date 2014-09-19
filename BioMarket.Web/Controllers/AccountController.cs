@@ -381,7 +381,8 @@
                     {
                         FirstName = model.FirstName,
                         LastName = model.LastName,
-                        Account = user.UserName
+                        Account = user.UserName,
+                        Phone = model.Phone
                     };
 
                     this.data.Clients.Add(client);
