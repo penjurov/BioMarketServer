@@ -30,7 +30,8 @@
         [Required]
         public decimal Price { get; set; }
 
-        [Required]
         public int FarmId { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

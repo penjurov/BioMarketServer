@@ -20,9 +20,12 @@ namespace BioMarket.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        //protected void Application_BeginRequest(object sender, EventArgs e)
-        //{
-        //    Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //}
+        protected void Application_EndRequest(object sender, EventArgs e)
+        {
+            if (this.Response.Headers.GetValues("Access-Control-Allow-Origin") == null)
+            {
+                this.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            }
+        }
     }
 }

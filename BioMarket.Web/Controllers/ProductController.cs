@@ -22,14 +22,17 @@ namespace BioMarket.Web.Controllers
         {
             this.data = data;
         }
-
+        
+        [Authorize]
         [HttpGet]
         public IHttpActionResult All()
         {
+            var farmId = this.data.Farms.All().FirstOrDefault(f => f.Account == this.User.Identity.Name).Id;
+
             var products = this.data
             .Products
                                .All()
-                               .Where(p => p.Deleted == false)
+                               .Where(p => p.Deleted == false && p.FarmId == farmId)
                                .Select(ProductModel.FromProduct);
 
             return this.Ok(products);
@@ -49,7 +52,7 @@ namespace BioMarket.Web.Controllers
                 return this.BadRequest("Product does not exists - invalid id");
             }
 
-            return this.Ok(product);
+            return this.Ok(product.ToArray()[0]);
         }
 
         [HttpGet]
@@ -97,7 +100,6 @@ namespace BioMarket.Web.Controllers
 
             existingProduct.Name = product.Name;
             existingProduct.Price = product.Price;
-            existingProduct.FarmId = product.FarmId;
 
             this.data.SaveChanges();
 
@@ -108,7 +110,6 @@ namespace BioMarket.Web.Controllers
                 Id = product.Id,
                 Name = product.Name,
                 Price = product.Price,
-                FarmId = product.FarmId
             };
 
             return this.Ok(newProduct);
@@ -156,9 +157,9 @@ namespace BioMarket.Web.Controllers
                 return this.BadRequest("You are not a farmer!");
             }
 
-            var farm = data.Farms.All().FirstOrDefault(f => f.Account == this.User.Identity.Name);
+            var farm = this.data.Farms.All().FirstOrDefault(f => f.Account == this.User.Identity.Name);
 
-            var existingProduct = data.Products.All().FirstOrDefault(p => p.Name == product.Name && p.Farm.Id == farm.Id);
+            var existingProduct = this.data.Products.All().FirstOrDefault(p => p.Name == product.Name && p.Farm.Id == farm.Id);
 
             if (existingProduct != null)
             {

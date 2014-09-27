@@ -19,8 +19,7 @@ namespace BioMarket.Web
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
-            config.EnableCors();
+         
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -33,6 +32,7 @@ namespace BioMarket.Web
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/plain"));
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
     }
 }
