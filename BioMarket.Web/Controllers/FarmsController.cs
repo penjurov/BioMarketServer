@@ -73,7 +73,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest(this.ModelState);
+                return this.BadRequest("Invalid data");
             }
 
             var isFarmer = this.User.IsInRole("Farmer");

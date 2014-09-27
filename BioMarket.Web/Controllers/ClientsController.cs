@@ -73,7 +73,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest(this.ModelState);
+                return this.BadRequest("Invalid data");
             }
 
             var isClient = this.User.IsInRole("Client");
@@ -116,7 +116,7 @@
         }
 
         [HttpPut]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(string name)
         {
             var isFarmer = this.User.IsInRole("Client");
 
@@ -127,17 +127,23 @@
 
             var userName = this.User.Identity.Name;
 
-            var existingClient = this.data.Farms
-                                     .All()
-                                     .Where(a => a.Id == id && a.Deleted == false && a.Account == userName)
-                                     .FirstOrDefault();
+            var existingClient = this.data
+            .Clients
+                                    .All()
+                                    .Where(a => a.Account == name && a.Deleted == false)
+                                    .FirstOrDefault();
 
             if (existingClient == null)
             {
                 return this.BadRequest("Such client does not exists or you have no authority to edit it!");
             }
 
-            existingClient.Deleted = true;
+            this.data.Clients.Delete(existingClient);
+
+            var existingAccount = this.data.Accounts.All().Where(a => a.UserName == name)
+                                    .FirstOrDefault();
+
+            this.data.Accounts.Delete(existingAccount);
 
             this.data.SaveChanges();
 

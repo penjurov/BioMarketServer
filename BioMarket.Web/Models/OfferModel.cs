@@ -47,6 +47,7 @@
 
         public int Id { get; set; }
 
+        [Required]
         public int ProductId { get; set; }
 
         [Required]
@@ -56,7 +57,6 @@
 
         public ClientModel BoughtBy { get; set; }
 
-        [Required]
         public DateTime PostDate { get; set; }
 
         public DateTime? BoughtDate { get; set; }

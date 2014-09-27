@@ -2,19 +2,15 @@ namespace BioMarket.Web.Controllers
 {
     using System.Linq;
     using System.Web.Http;
-
     using BioMarket.Data;
-    using BioMarket.Web.Models;
     using BioMarket.Models;
-
+    using BioMarket.Web.Models;
 
     public class ProductController : ApiController
     {
-
         private readonly IBioMarketData data;
 
-        public ProductController()
-            : this(new BioMarketData())
+        public ProductController() : this(new BioMarketData())
         {
         }
 
@@ -77,7 +73,7 @@ namespace BioMarket.Web.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest(this.ModelState);
+                return this.BadRequest("Invalid data");
             }
 
             var isFarmer = this.User.IsInRole("Farmer");
@@ -89,9 +85,9 @@ namespace BioMarket.Web.Controllers
 
             var existingProduct = this.data
             .Products
-                              .All()
-                              .Where(p => p.Id == id && p.Deleted == false)
-                              .FirstOrDefault();
+                                      .All()
+                                      .Where(p => p.Id == id && p.Deleted == false)
+                                      .FirstOrDefault();
 
             if (existingProduct == null)
             {
@@ -109,8 +105,8 @@ namespace BioMarket.Web.Controllers
             {
                 Id = product.Id,
                 Name = product.Name,
-                Price = product.Price,
-            };
+                Price = product.Price
+            , };
 
             return this.Ok(newProduct);
         }
@@ -176,7 +172,7 @@ namespace BioMarket.Web.Controllers
             this.data.Products.Add(newProduct);
             this.data.SaveChanges();
 
-            return Ok(newProduct.Id);
+            return this.Ok(newProduct.Id);
         }
     }
 }

@@ -116,10 +116,10 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest(this.ModelState);
+                return this.BadRequest("Invalid data");
             }
 
-            var isFarmer = this.User.IsInRole("Client");
+            var isFarmer = this.User.IsInRole("Farmer");
 
             if (!isFarmer)
             {
@@ -128,22 +128,31 @@
 
             var userName = this.User.Identity.Name;
 
-            var farmer = this.data.Farms.All().Where(c => c.Account == userName).FirstOrDefault();
+            var product = this.data.Products.All()
+                              .FirstOrDefault(p => p.Id == offer.ProductId);
 
             var newOffer = new Offer
             {
                 Quantity = offer.Quantity,
                 ProductPhoto = offer.ProductPhoto,
-                PostDate = offer.PostDate,
-                ProductId = offer.ProductId
+                PostDate = DateTime.Now,
+                ProductId = offer.ProductId,
+                Product = product
             };
 
             this.data.Offers.Add(newOffer);
             this.data.SaveChanges();
 
-            offer.Id = newOffer.Id;
+            var returnOffer = new
+            {
+                Id = newOffer.Id,
+                Quantity = newOffer.Quantity,
+                ProductPhoto = newOffer.ProductPhoto,
+                PostDate = newOffer.PostDate,
+                ProductId = newOffer.ProductId,
+            };
 
-            return this.Ok(newOffer);
+            return this.Ok(returnOffer);
         }
 
         [HttpPut]
@@ -151,7 +160,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest(this.ModelState);
+                return this.BadRequest("Invalid data");
             }
 
             var isClient = this.User.IsInRole("Client");

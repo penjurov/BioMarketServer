@@ -126,7 +126,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest("Invalid data");
             }
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
@@ -146,7 +146,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest("Invalid data");
             }
 
             IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
@@ -165,7 +165,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest("Invalid data");
             }
 
             Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
@@ -203,7 +203,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest("Invalid data");
             }
 
             IdentityResult result;
@@ -331,7 +331,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest("Invalid data");
             }
 
             var user = new Account()
@@ -408,7 +408,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest("Invalid data");
             }
 
             var info = await Authentication.GetExternalLoginInfoAsync();
@@ -470,10 +470,10 @@
                 if (ModelState.IsValid)
                 {
                     // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
+                    return BadRequest("Invalid data");
                 }
 
-                return BadRequest(ModelState);
+                return BadRequest("Invalid data");
             }
 
             return null;
