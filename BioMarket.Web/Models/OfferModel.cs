@@ -18,7 +18,13 @@
                     Id = a.Id,
                     Quantity = a.Quantity,
                     ProductPhoto = a.ProductPhoto,
-                    PostDate = a.PostDate
+                    PostDate = a.PostDate,
+                    Product = a.Product.Name,
+                    ProductId = a.ProductId,
+                    Farm = a.Product.Farm.Name,
+                    FarmId = a.Product.FarmId,
+                    FarmLatitude = a.Product.Farm.Latitude,
+                    FarmLongitude = a.Product.Farm.Longitude
                 };
             }
         }
@@ -50,6 +56,12 @@
         [Required]
         public int ProductId { get; set; }
 
+        public string Product { get; set; }
+
+        public int FarmId { get; set; }
+
+        public string Farm { get; set; }     
+
         [Required]
         public double Quantity { get; set; }
 
@@ -60,6 +72,10 @@
         public DateTime PostDate { get; set; }
 
         public DateTime? BoughtDate { get; set; }
+
+        public decimal FarmLatitude { get; set; }
+
+        public decimal FarmLongitude { get; set; }
 
         public bool Deleted { get; set; }
     }

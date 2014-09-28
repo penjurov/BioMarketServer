@@ -131,7 +131,7 @@ namespace BioMarket.Web.Controllers
                 return this.BadRequest("Such product does not exists!");
             }
 
-            product.Deleted = true;
+            this.data.Products.Delete(product);
 
             this.data.SaveChanges();
 

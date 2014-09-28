@@ -138,7 +138,7 @@
         }
 
         [HttpPut]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(string name)
         {
             var isFarmer = this.User.IsInRole("Farmer");
 
@@ -147,11 +147,9 @@
                 return this.BadRequest("You are not farmer!");
             }
 
-            var userName = this.User.Identity.Name;
-
             var existingFarm = this.data.Farms
                                    .All()
-                                   .Where(a => a.Id == id && a.Deleted == false && a.Account == userName)
+                                   .Where(a => a.Account == name && a.Deleted == false)
                                    .FirstOrDefault();
 
             if (existingFarm == null)
@@ -159,7 +157,12 @@
                 return this.BadRequest("Such farm does not exists or you have no authority to edit it!");
             }
 
-            existingFarm.Deleted = true;
+            this.data.Farms.Delete(existingFarm);
+
+            var existingAccount = this.data.Accounts.All().Where(a => a.UserName == name)
+                                    .FirstOrDefault();
+
+            this.data.Accounts.Delete(existingAccount);
 
             this.data.SaveChanges();
 

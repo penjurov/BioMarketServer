@@ -26,8 +26,9 @@
             var offers = this.data
             .Offers
                              .All()
-                             .Where(a => a.Deleted == false)
-                             .Select(OfferModel.FromOffer);
+                             .Where(o => o.Deleted == false && o.BoughtById == null)
+                             .OrderByDescending(o => o.PostDate)
+                             .Select(OfferModel.FromOffer).ToList();
 
             return this.Ok(offers);
         }
@@ -156,13 +157,8 @@
         }
 
         [HttpPut]
-        public IHttpActionResult Buy(int id, OfferModel offer)
+        public IHttpActionResult Buy(int id)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest("Invalid data");
-            }
-
             var isClient = this.User.IsInRole("Client");
 
             if (!isClient)
@@ -186,22 +182,16 @@
             }
 
             existingOffer.BoughtBy = client;
+            existingOffer.BoughtById = client.Id;
             existingOffer.BoughtDate = DateTime.Now;
 
             this.data.SaveChanges();
 
-            offer.Id = id;
-
-            var newOffer = new
-            {
-                Id = client.Id,
-                Quantity = offer.Quantity,
-                ProductPhoto = offer.ProductPhoto,
-                BoughtBy = offer.BoughtBy,
-                PostDate = offer.PostDate,
-                BoughtDate = offer.BoughtDate,
-                ProductId = offer.ProductId
-            , };
+            var newOffer = this.data
+            .Offers
+                                    .All()
+                                    .Where(a => a.Id == id)
+                                    .Select(OfferModel.FromOffer);
 
             return this.Ok(newOffer);
         }
